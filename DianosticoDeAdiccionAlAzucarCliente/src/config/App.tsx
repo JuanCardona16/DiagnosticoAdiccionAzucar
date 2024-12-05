@@ -15,7 +15,7 @@ function App() {
                 <Outlet />
               </main>
               <footer className={styles.footer}>
-                Creado con 💚 por Juan David Cardona
+                Creado con 💚 por Con Ayuda De Diosito
               </footer>
             </div>
           }
