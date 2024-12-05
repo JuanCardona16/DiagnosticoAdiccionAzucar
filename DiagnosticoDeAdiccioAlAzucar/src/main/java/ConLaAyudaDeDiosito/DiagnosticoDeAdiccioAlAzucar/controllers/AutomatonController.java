@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/automaton")
-@CrossOrigin(origins = "*")
 public class AutomatonController {
 
     @Autowired
