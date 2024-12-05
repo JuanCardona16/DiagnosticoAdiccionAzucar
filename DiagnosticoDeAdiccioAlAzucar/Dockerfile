@@ -17,7 +17,7 @@ WORKDIR /app
 
 # Copia el archivo jar del build
 # Asegúrate de reemplazar 'your-app.jar' con el nombre real de tu archivo JAR
-COPY --from=build /app/target/your-app.jar /app/app.jar
+COPY --from=build /app/target/DiagnosticoDeAdiccioAlAzucar-0.0.1-SNAPSHOT.jar /app/app.jar
 
 # Expone el puerto (ajusta según tu aplicación)
 EXPOSE 8080
