@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public class AutomatonState {
-    private int currentState = 0;
+    /* private int currentState = 0;
     private int score = 0;
     private final List<Boolean> responses = new ArrayList<>();
 
@@ -39,6 +39,24 @@ public class AutomatonState {
         currentState = 0;
         score = 0;
         responses.clear();
+    } */
+
+    private int currentState = 0;
+
+
+    public int getCurrentState() {
+        return currentState;
+    }
+
+    public void transition(boolean response) {
+        // La transición es secuencial: pasa al siguiente estado
+        if (currentState <= 5) { // Limita el avance a la cantidad de preguntas disponibles
+            currentState++;
+        }
+    }
+
+    public void reset() {
+        currentState = 0; // Reinicia el estado inicial
     }
 
 }

@@ -14,8 +14,12 @@ public class AutomatonController {
     private SugarAddictionAutomaton sugarAddictionAutomaton;
 
     @GetMapping("/questions")
-    public Question getNextQuestion() {
-        return sugarAddictionAutomaton.getNextQuestion();
+    public String getNextQuestion() {
+        String question = sugarAddictionAutomaton.getNextQuestion();
+        if (question == null) {
+            return "No hay más preguntas, el diagnóstico está completo.";
+        }
+        return question;
     }
 
     @PostMapping("/response")
@@ -23,10 +27,11 @@ public class AutomatonController {
         return sugarAddictionAutomaton.processResponse(response);
     }
 
+    // Endpoint para reiniciar el estado del autómata
     @PostMapping("/reset")
-    public ResponseEntity<String> resetAutomaton() {
-        sugarAddictionAutomaton.resetState(); // Método para reiniciar el estado
-        return ResponseEntity.ok("Estado reiniciado.");
+    public String resetAutomaton() {
+        sugarAddictionAutomaton.resetState();
+        return "El autómata se ha reiniciado.";
     }
 
 }
