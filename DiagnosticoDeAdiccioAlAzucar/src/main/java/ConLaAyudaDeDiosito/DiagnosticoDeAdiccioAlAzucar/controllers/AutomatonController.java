@@ -16,9 +16,6 @@ public class AutomatonController {
     @GetMapping("/questions")
     public String getNextQuestion() {
         String question = sugarAddictionAutomaton.getNextQuestion();
-        if (question == null) {
-            return "No hay más preguntas, el diagnóstico está completo.";
-        }
         return question;
     }
 
