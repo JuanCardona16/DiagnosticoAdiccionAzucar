@@ -23,16 +23,21 @@ export const Prueba = () => {
     const fetchQuestion = async () => {
       setIsLoading(true); // Inicia la carga
       const question = await getQuestions();
-      setQuestion(question?.text || null);
+      setQuestion(question || null);
       setIsLoading(false); // Termina la carga
     };
 
     fetchQuestion();
   }, []);
 
+  console.log(question)
+
   const handleResponse = async (response: boolean) => {
     setIsLoading(true); // Inicia la carga
     const result = await sendResponse(response);
+    console.log("Respuestas" + response)
+
+    console.log("Resultado: " + result)
 
     if (result) {
       setDiagnosis(result); // Diagnóstico final
@@ -40,13 +45,13 @@ export const Prueba = () => {
       setQuestion(null);
     } else {
       const nextQuestion = await getQuestions();
-      setQuestion(nextQuestion?.text || null);
+      setQuestion(nextQuestion || null);
     }
     setIsLoading(false); // Termina la carga
   };
 
   const generateDiagnostics = (data: string) => {
-    if (data === "Adicción severa al azúcar") {
+    if (data === "Adicción severa al azúcar" || data === "Riesgo alto de adicción al azúcar") {
       setResultDiagnosis({
         diagnosis: "Alto riesgo de adicción al azúcar.",
         description:
